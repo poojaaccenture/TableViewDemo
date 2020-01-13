@@ -18,6 +18,7 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         initialSetup()
+        viewModel.getTableData()
     }
 
     func initialSetup() {

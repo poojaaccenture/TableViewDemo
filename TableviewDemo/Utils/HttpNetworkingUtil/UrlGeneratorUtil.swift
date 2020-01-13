@@ -2,19 +2,16 @@
 //  UrlGeneratorUtil.swift
 //  TableViewDemo
 //
-//  Created by Pooja Gupta on 16/10/18.
-//  Copyright © 2018 SlicePay. All rights reserved.
+//  Created by Pooja Gupta on 13/01/20.
+//  Copyright © 2020 Accenture. All rights reserved.
 //
 
 import UIKit
 
-class UrlGeneratorUtil: NSObject {
+class UrlGeneratorUtil {
 
-    
-    //      https://newsapi.org/v2/everything?q=apple&pageSize=10&page=1&sortBy=publishedAt&apiKey=3363a374df9f4660a260a187915f0937
-    class func getNewsDataUrl(for page : UInt) ->String{
+    class func tableDataUrl() ->String{
   
-        return "\(API.getRootUrl())/everything?q=apple&pageSize=\(Constants.pageSize)&page=\(page)&sortBy=popularity&apiKey=\(Constants.appKey)";
+        return "https://api.myjson.com/bins/wxj4q";
     }
-    
 }

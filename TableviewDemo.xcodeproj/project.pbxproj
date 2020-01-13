@@ -11,6 +11,12 @@
 		356604BF23CC3C8D00019B26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356604BC23CC3C8D00019B26 /* AppDelegate.swift */; };
 		35AF547B23CC477A00EA9E59 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF547A23CC477A00EA9E59 /* BaseViewController.swift */; };
 		35AF547D23CC47B400EA9E59 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF547C23CC47B400EA9E59 /* BaseViewModel.swift */; };
+		35AF548323CC4B9900EA9E59 /* UrlGeneratorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF548023CC4B9900EA9E59 /* UrlGeneratorUtil.swift */; };
+		35AF548423CC4B9900EA9E59 /* WebServicesMappingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF548123CC4B9900EA9E59 /* WebServicesMappingUtil.swift */; };
+		35AF548523CC4B9900EA9E59 /* HttpNetworkingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AF548223CC4B9900EA9E59 /* HttpNetworkingUtil.swift */; };
+		35FA58B423CC4F490047FFC6 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58B223CC4F490047FFC6 /* Structs.swift */; };
+		35FA58B523CC4F490047FFC6 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58B323CC4F490047FFC6 /* Enum.swift */; };
+		35FA58B823CC50C70047FFC6 /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58B723CC50C70047FFC6 /* TableData.swift */; };
 		7703C623C6326990B4118944 /* Pods_TableviewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEB5C55211442FD3AD727C7 /* Pods_TableviewDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +28,12 @@
 		356604C123CC3D0400019B26 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35AF547A23CC477A00EA9E59 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		35AF547C23CC47B400EA9E59 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		35AF548023CC4B9900EA9E59 /* UrlGeneratorUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlGeneratorUtil.swift; sourceTree = "<group>"; };
+		35AF548123CC4B9900EA9E59 /* WebServicesMappingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServicesMappingUtil.swift; sourceTree = "<group>"; };
+		35AF548223CC4B9900EA9E59 /* HttpNetworkingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpNetworkingUtil.swift; sourceTree = "<group>"; };
+		35FA58B223CC4F490047FFC6 /* Structs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		35FA58B323CC4F490047FFC6 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		35FA58B723CC50C70047FFC6 /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
 		5245DD3C721C5EE5E75AA38B /* Pods-TableviewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableviewDemo.release.xcconfig"; path = "Target Support Files/Pods-TableviewDemo/Pods-TableviewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5CEB5C55211442FD3AD727C7 /* Pods_TableviewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableviewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -59,6 +71,9 @@
 		3566049723CC39DC00019B26 /* TableviewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				35FA58B623CC4FC50047FFC6 /* Model */,
+				35FA58B123CC4F490047FFC6 /* StructAndEnum */,
+				35AF547E23CC4B9900EA9E59 /* Utils */,
 				356604BB23CC3C8D00019B26 /* Application */,
 				356604C123CC3D0400019B26 /* Info.plist */,
 				356604B823CC3C1B00019B26 /* Resources */,
@@ -100,13 +115,47 @@
 			path = BaseViewController;
 			sourceTree = "<group>";
 		};
+		35AF547E23CC4B9900EA9E59 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				35AF547F23CC4B9900EA9E59 /* HttpNetworkingUtil */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		35AF547F23CC4B9900EA9E59 /* HttpNetworkingUtil */ = {
+			isa = PBXGroup;
+			children = (
+				35AF548023CC4B9900EA9E59 /* UrlGeneratorUtil.swift */,
+				35AF548123CC4B9900EA9E59 /* WebServicesMappingUtil.swift */,
+				35AF548223CC4B9900EA9E59 /* HttpNetworkingUtil.swift */,
+			);
+			path = HttpNetworkingUtil;
+			sourceTree = "<group>";
+		};
+		35FA58B123CC4F490047FFC6 /* StructAndEnum */ = {
+			isa = PBXGroup;
+			children = (
+				35FA58B223CC4F490047FFC6 /* Structs.swift */,
+				35FA58B323CC4F490047FFC6 /* Enum.swift */,
+			);
+			path = StructAndEnum;
+			sourceTree = "<group>";
+		};
+		35FA58B623CC4FC50047FFC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				35FA58B723CC50C70047FFC6 /* TableData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		41DA6FBEC547946B86130984 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				27DDD73AE80BC77A70EF1E51 /* Pods-TableviewDemo.debug.xcconfig */,
 				5245DD3C721C5EE5E75AA38B /* Pods-TableviewDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -196,6 +245,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-TableviewDemo/Pods-TableviewDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -203,6 +253,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -239,6 +290,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				35AF547B23CC477A00EA9E59 /* BaseViewController.swift in Sources */,
+				35AF548523CC4B9900EA9E59 /* HttpNetworkingUtil.swift in Sources */,
+				35FA58B523CC4F490047FFC6 /* Enum.swift in Sources */,
+				35FA58B823CC50C70047FFC6 /* TableData.swift in Sources */,
+				35AF548423CC4B9900EA9E59 /* WebServicesMappingUtil.swift in Sources */,
+				35FA58B423CC4F490047FFC6 /* Structs.swift in Sources */,
+				35AF548323CC4B9900EA9E59 /* UrlGeneratorUtil.swift in Sources */,
 				356604BF23CC3C8D00019B26 /* AppDelegate.swift in Sources */,
 				35AF547D23CC47B400EA9E59 /* BaseViewModel.swift in Sources */,
 			);

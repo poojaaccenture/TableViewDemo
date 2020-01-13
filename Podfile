@@ -7,6 +7,7 @@ use_frameworks!
 
 pod 'Alamofire'
 pod 'Kingfisher'
+pod 'ObjectMapper'
 
 
 

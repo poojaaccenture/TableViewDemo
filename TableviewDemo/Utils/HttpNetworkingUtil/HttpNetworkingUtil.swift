@@ -2,8 +2,8 @@
 //  HttpNetworkingUtil.swift
 //  TableViewDemo
 //
-//  Created by Pooja Gupta on 16/10/18.
-//  Copyright © 2018 SlicePay. All rights reserved.
+//  Created by Pooja Gupta on 13/01/20.
+//  Copyright © 2020 Accenture. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import Alamofire
 
 public typealias WSCompletionBlock = (DataResponse<Any>) -> Void
 
-class HttpNetworkingUtil: NSObject {
+class HttpNetworkingUtil {
 
     /// GET Request
     ///

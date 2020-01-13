@@ -10,4 +10,30 @@ import UIKit
 
 class BaseViewModel {
 
+    var data: TableData?
+    
+    
+}
+
+// Network calls
+extension BaseViewModel {
+    
+    func getTableData() {
+        
+        WebServicesMappingUtil.getTableData {[weak self] (response, statusCode) in
+            print(response as Any, statusCode)
+           
+            switch statusCode {
+                
+                case HTTP.Status.success:
+                    if let response = response as? TableData {
+                        self?.data = response
+                }
+                
+            default:
+                break
+            }
+            
+        }
+    }
 }
