@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initialSetup() {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
-        self.navController = UINavigationController.init(rootViewController: ViewController())
+        self.navController = UINavigationController.init(rootViewController: BaseViewController())
         self.window?.rootViewController = self.navController
         window?.makeKeyAndVisible()
     }

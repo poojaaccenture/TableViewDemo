@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class BaseViewController: UIViewController {
+    
+    var tableview: UITableView?
+    var viewModel = BaseViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,12 @@ class ViewController: UIViewController {
 
     func initialSetup() {
         self.view.backgroundColor = .white
+        
+        setTableView()
+    }
+    
+    func setTableView()  {
+        tableview = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: 320, height: 480), style: .grouped)
     }
 
 }
