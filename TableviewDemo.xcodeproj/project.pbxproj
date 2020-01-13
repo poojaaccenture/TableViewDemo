@@ -17,6 +17,11 @@
 		35FA58B423CC4F490047FFC6 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58B223CC4F490047FFC6 /* Structs.swift */; };
 		35FA58B523CC4F490047FFC6 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58B323CC4F490047FFC6 /* Enum.swift */; };
 		35FA58B823CC50C70047FFC6 /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58B723CC50C70047FFC6 /* TableData.swift */; };
+		35FA58BA23CC5BB40047FFC6 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58B923CC5BB40047FFC6 /* Dynamic.swift */; };
+		35FA58BE23CC6F100047FFC6 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58BD23CC6F100047FFC6 /* BaseTableViewCell.swift */; };
+		35FA58C023CC6FA10047FFC6 /* BaseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58BF23CC6FA10047FFC6 /* BaseCellViewModel.swift */; };
+		35FA58C323CC8B580047FFC6 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58C223CC8B580047FFC6 /* UIImageView.swift */; };
+		35FA58C723CC970F0047FFC6 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA58C623CC970F0047FFC6 /* BaseLabel.swift */; };
 		7703C623C6326990B4118944 /* Pods_TableviewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEB5C55211442FD3AD727C7 /* Pods_TableviewDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +39,11 @@
 		35FA58B223CC4F490047FFC6 /* Structs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		35FA58B323CC4F490047FFC6 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		35FA58B723CC50C70047FFC6 /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
+		35FA58B923CC5BB40047FFC6 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		35FA58BD23CC6F100047FFC6 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		35FA58BF23CC6FA10047FFC6 /* BaseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellViewModel.swift; sourceTree = "<group>"; };
+		35FA58C223CC8B580047FFC6 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		35FA58C623CC970F0047FFC6 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 		5245DD3C721C5EE5E75AA38B /* Pods-TableviewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableviewDemo.release.xcconfig"; path = "Target Support Files/Pods-TableviewDemo/Pods-TableviewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5CEB5C55211442FD3AD727C7 /* Pods_TableviewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableviewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -71,12 +81,15 @@
 		3566049723CC39DC00019B26 /* TableviewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				35FA58C423CC96F70047FFC6 /* Custom Components */,
+				35FA58C123CC8B490047FFC6 /* Extension */,
+				356604BB23CC3C8D00019B26 /* Application */,
+				35FA58BB23CC6EB60047FFC6 /* Custom Cells */,
+				356604C123CC3D0400019B26 /* Info.plist */,
 				35FA58B623CC4FC50047FFC6 /* Model */,
+				356604B823CC3C1B00019B26 /* Resources */,
 				35FA58B123CC4F490047FFC6 /* StructAndEnum */,
 				35AF547E23CC4B9900EA9E59 /* Utils */,
-				356604BB23CC3C8D00019B26 /* Application */,
-				356604C123CC3D0400019B26 /* Info.plist */,
-				356604B823CC3C1B00019B26 /* Resources */,
 				35AF547623CC45B600EA9E59 /* ViewControllers */,
 			);
 			path = TableviewDemo;
@@ -119,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				35AF547F23CC4B9900EA9E59 /* HttpNetworkingUtil */,
+				35FA58B923CC5BB40047FFC6 /* Dynamic.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -148,6 +162,47 @@
 				35FA58B723CC50C70047FFC6 /* TableData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		35FA58BB23CC6EB60047FFC6 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				35FA58BC23CC6EB60047FFC6 /* Tableview Cells */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		35FA58BC23CC6EB60047FFC6 /* Tableview Cells */ = {
+			isa = PBXGroup;
+			children = (
+				35FA58BD23CC6F100047FFC6 /* BaseTableViewCell.swift */,
+				35FA58BF23CC6FA10047FFC6 /* BaseCellViewModel.swift */,
+			);
+			path = "Tableview Cells";
+			sourceTree = "<group>";
+		};
+		35FA58C123CC8B490047FFC6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				35FA58C223CC8B580047FFC6 /* UIImageView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		35FA58C423CC96F70047FFC6 /* Custom Components */ = {
+			isa = PBXGroup;
+			children = (
+				35FA58C523CC96F70047FFC6 /* UILabel */,
+			);
+			path = "Custom Components";
+			sourceTree = "<group>";
+		};
+		35FA58C523CC96F70047FFC6 /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				35FA58C623CC970F0047FFC6 /* BaseLabel.swift */,
+			);
+			path = UILabel;
 			sourceTree = "<group>";
 		};
 		41DA6FBEC547946B86130984 /* Pods */ = {
@@ -290,9 +345,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				35AF547B23CC477A00EA9E59 /* BaseViewController.swift in Sources */,
+				35FA58C723CC970F0047FFC6 /* BaseLabel.swift in Sources */,
+				35FA58C023CC6FA10047FFC6 /* BaseCellViewModel.swift in Sources */,
+				35FA58BA23CC5BB40047FFC6 /* Dynamic.swift in Sources */,
+				35FA58C323CC8B580047FFC6 /* UIImageView.swift in Sources */,
 				35AF548523CC4B9900EA9E59 /* HttpNetworkingUtil.swift in Sources */,
 				35FA58B523CC4F490047FFC6 /* Enum.swift in Sources */,
 				35FA58B823CC50C70047FFC6 /* TableData.swift in Sources */,
+				35FA58BE23CC6F100047FFC6 /* BaseTableViewCell.swift in Sources */,
 				35AF548423CC4B9900EA9E59 /* WebServicesMappingUtil.swift in Sources */,
 				35FA58B423CC4F490047FFC6 /* Structs.swift in Sources */,
 				35AF548323CC4B9900EA9E59 /* UrlGeneratorUtil.swift in Sources */,

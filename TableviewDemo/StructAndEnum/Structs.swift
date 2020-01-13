@@ -6,7 +6,7 @@
 //  Copyright © 2020 Accenture. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 //MARK: Web service related status codes
 
@@ -29,4 +29,25 @@ struct HTTP {
         static let serverError : Int = 500
     }
 }
+
+struct TextWithStyle {
+    let text: String
+    let color: UIColor?
+    let font: UIFont?
+    let alignment: NSTextAlignment?
+    
+    init(text: String,
+         color: UIColor? = nil,
+         font: UIFont? = nil,
+         alignment: NSTextAlignment? = .natural) {
+        
+        self.text = text
+        self.color = color
+        self.font = font
+        self.alignment = alignment
+    }
+}
+
+
+
 
