@@ -23,9 +23,14 @@ extension UIImageView {
             
             self.kf.indicatorType = .activity
             (self.kf.indicator?.view as? UIActivityIndicatorView)?.color = UIColor.black;
-            
-            self.kf.setImage(with: url, placeholder: placeHolderImage, options: [.transition(.fade(0.2))], progressBlock: nil) { (image, error, cacheType, url) in }
+            let options: [KingfisherOptionsInfoItem] = [.scaleFactor(UIScreen.main.scale), .transition(.fade(0.25)), .cacheOriginalImage]
+            self.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: options, progressBlock: nil) { (image, error, chacheType, url) in
+                if (image != nil) {
+                     self.image = image
+                }
+            }
         }
     }
 }
+
 

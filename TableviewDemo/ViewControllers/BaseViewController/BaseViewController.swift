@@ -10,7 +10,30 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    var tableview: UITableView!
+    lazy var tableview: UITableView = {
+        let tableView = UITableView()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: CellIdentifier.baseTableViewCell.rawValue)
+        return tableView
+    }()
+    
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView.init(style: .gray)
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(BaseViewController.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.gray
+        
+        return refreshControl
+    }()
+    
     var viewModel = BaseViewModel()
     
     override func viewDidLoad() {
@@ -21,7 +44,6 @@ class BaseViewController: UIViewController {
         bind()
         viewModel.getTableData()
     }
-    
 }
 
 // MARK:- UI Setup
@@ -29,29 +51,52 @@ extension BaseViewController {
     func initialSetup() {
         
         setTableView()
+        setActivityIndicator()
     }
     
     func setTableView()  {
-        tableview = UITableView()
-        tableview.register(BaseTableViewCell.self, forCellReuseIdentifier: CellIdentifier.baseTableViewCell.rawValue)
         tableview.delegate = self
         tableview.dataSource = self
-        tableview.rowHeight = UITableView.automaticDimension
-        tableview.estimatedRowHeight = UITableView.automaticDimension
-        self.view.addSubview(tableview!)
+        self.tableview.addSubview(refreshControl)
+        self.view.addSubview(tableview)
         addConstraintToTableView()
     }
     
-    func addConstraintToTableView() {
-       
-     tableview?.translatesAutoresizingMaskIntoConstraints = false
+    func setActivityIndicator() {
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        addConstraintToActivityIndicator()
+    }
+    
+    func addConstraintToActivityIndicator() {
+//        let height = self.activityIndicator.heightAnchor.constraint(equalToConstant: 100)
+//        let width = self.activityIndicator.widthAnchor.constraint(equalToConstant: 100)
+        let xCenter = self.activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        let yCenter = self.activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         
-      let leading =  self.tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
-      let top =  self.tableview.topAnchor.constraint(equalTo: view.topAnchor, constant: 0)
-      let trailing =  self.tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
-      let bottom =  self.tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        view.addConstraints([xCenter, yCenter])
+    }
+    
+    func addConstraintToTableView() {
+        
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        
+        let leading =  self.tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
+        let top =  self.tableview.topAnchor.constraint(equalTo: view.topAnchor, constant: 0)
+        let trailing =  self.tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+        let bottom =  self.tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         
         view.addConstraints([leading, top, trailing, bottom])
+    }
+}
+
+//MARK: IBAction
+extension BaseViewController {
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        viewModel.getTableData()
+        activityIndicator.startAnimating()
+        refreshControl.endRefreshing()
     }
 }
 
@@ -64,6 +109,7 @@ extension BaseViewController {
     func bindDataDidLoad() {
         viewModel.dataDidLoad.bind {[weak self] (didLoad) in
             self?.title = self?.viewModel.title
+            self?.activityIndicator.stopAnimating()
             self?.tableview.reloadData()
         }
     }
