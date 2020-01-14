@@ -124,7 +124,7 @@ extension BaseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.baseTableViewCell) as? BaseTableViewCell else { return UITableViewCell()
         }
-        
+        cell.selectionStyle = .none
         cell.configure(with: viewModel.cellViewModel(for: indexPath))
         return cell
     }
