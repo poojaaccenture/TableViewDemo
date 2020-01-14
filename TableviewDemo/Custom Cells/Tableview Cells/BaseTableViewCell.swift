@@ -77,7 +77,6 @@ class BaseTableViewCell: UITableViewCell {
 //MARK:- Initial setup
 extension BaseTableViewCell {
     func initialSetup() {
-        
         self.heightAnchor.constraint(greaterThanOrEqualToConstant: (imageHeight+(2*padding))).isActive = true
         setImgView()
         setLabel()
@@ -92,14 +91,12 @@ extension BaseTableViewCell {
     func setLabel() {
         self.label = BaseLabel()
         self.addSubview(label)
-        
         addConstrainsToLabel()
     }
     
     func setDescription() {
         self.descLabel = BaseLabel()
         self.addSubview(descLabel)
-        
         addConstrainsToDescLabel()
     }
     
@@ -113,13 +110,11 @@ extension BaseTableViewCell {
 //MARK: - Constraints related methods
 extension BaseTableViewCell {
     func addConstrainsToLabel() {
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         let leading =  self.label.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor, constant: padding)
         let top =  self.label.topAnchor.constraint(equalTo: self.topAnchor, constant: padding)
         let trailing =  self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding)
-        
         self.addConstraints([leading, top, trailing])
     }
     
@@ -129,7 +124,6 @@ extension BaseTableViewCell {
         let leading =  self.descLabel.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor, constant: padding)
         let top =  self.descLabel.topAnchor.constraint(equalTo: self.label.bottomAnchor, constant: (padding/2))
         let trailing =  self.descLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding)
-        
         let bottom =  self.descLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -padding)
         self.addConstraints([leading, top, trailing, bottom])
     }
@@ -141,7 +135,6 @@ extension BaseTableViewCell {
         let top =  self.imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding)
         let height =  self.imgView.heightAnchor.constraint(equalToConstant: imageHeight)
         let width =  self.imgView.widthAnchor.constraint(equalToConstant: imageHeight)
-        
         self.addConstraints([leading, top, height, width])
     }
 }

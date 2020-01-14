@@ -31,11 +31,11 @@ class BaseViewController: UIViewController {
             #selector(BaseViewController.handleRefresh(_:)),
                                  for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.gray
-        
         return refreshControl
     }()
     
     var viewModel = BaseViewModel()
+    var isRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,6 @@ class BaseViewController: UIViewController {
 // MARK:- UI Setup
 extension BaseViewController {
     func initialSetup() {
-        
         setTableView()
         setActivityIndicator()
     }
@@ -79,7 +78,6 @@ extension BaseViewController {
     }
     
     func addConstraintToTableView() {
-        
         tableview.translatesAutoresizingMaskIntoConstraints = false
         
         let leading =  self.tableview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
@@ -94,8 +92,8 @@ extension BaseViewController {
 //MARK: IBAction
 extension BaseViewController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        isRefreshing = true
         viewModel.getTableData()
-        activityIndicator.startAnimating()
         refreshControl.endRefreshing()
     }
 }
@@ -107,15 +105,23 @@ extension BaseViewController {
     }
     
     func bindDataDidLoad() {
-        viewModel.dataDidLoad.bind {[weak self] (didLoad) in
+        viewModel.dataDidLoad.bind {[weak self] (dataDidLoad) in
             guard let self = self else { return }
-            self.title = self.viewModel.title
+            if dataDidLoad {
+                self.title = self.viewModel.title
+                self.tableview.reloadData()
+            } else {
+                // Show the error msg if its not pull to refresh
+                if let errorMsg = self.viewModel.errorMessage, !self.isRefreshing {
+                    self.showAlert(with: "Error".localized, msg: errorMsg)
+                }
+            }
             self.activityIndicator.stopAnimating()
-            self.tableview.reloadData()
         }
     }
 }
 
+//MARK:- TableViewDataSource
 extension BaseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows(in: section)

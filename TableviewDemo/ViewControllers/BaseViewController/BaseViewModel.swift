@@ -11,14 +11,14 @@ import UIKit
 class BaseViewModel {
     
     var data: TableData?
+    var errorMessage: String?
     
     // MARK:- Dynamic parameters
     let dataDidLoad = Dynamic<Bool>(value: false)
     
     var title: String {
         return data?.title ?? ""
-    }
-    
+    }    
 }
 
 // MARK:- Table releated methods
@@ -55,13 +55,16 @@ extension BaseViewModel {
             case HTTP.Status.success:
                 if let response = response as? TableData {
                     self.data = response
-                    self.dataDidLoad.value = true
                 }
+                self.dataDidLoad.value = true
                 
             default:
-                break
+                // Data is not loaded
+                if let error = response as? String {
+                    self.errorMessage = error
+                }
+                self.dataDidLoad.value = false
             }
-            
         }
     }
 }

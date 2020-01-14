@@ -6,4 +6,8 @@
   Copyright © 2020 Organization. All rights reserved.
 */
 
+//BaseViewController
 "Refreshing" = "Refreshing";
+
+// Alert
+"OK" = "OK";

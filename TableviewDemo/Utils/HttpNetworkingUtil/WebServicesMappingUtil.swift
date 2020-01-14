@@ -23,24 +23,20 @@ class WebServicesMappingUtil {
                 
                 if(response.response?.statusCode == HTTP.Status.success){
 
-                    let data  =  Mapper<TableData>().map(JSON: response.result.value as! [String : Any])
+                    if let value = response.result.value as? [String: Any], let data  =  Mapper<TableData>().map(JSON: value) {
                     
                     //Remove the data which title is nill
-                    let filtetedData = data?.rows.filter({ (item) -> Bool in
-                        item.title != nil
-                    })
-                    
-                    data?.rows = filtetedData ?? [Row]()
+                    data.rows = data.rows.filter({$0.title != nil })
                     closure(data as Any, (response.response?.statusCode)!)
-
+                    } else { closure(response.result.value, (response.response?.statusCode)!)}
                 }else{
-                    closure(nil, (response.response?.statusCode)!)
+                    closure(response.result.value, (response.response?.statusCode)!)
                 }
                 break;
                 
             case .failure(var error):
                 error = response.result.error!
-                closure(error,HTTP.Status.internetFailure)
+                closure(error.localizedDescription,0)
             }
         }
     }
