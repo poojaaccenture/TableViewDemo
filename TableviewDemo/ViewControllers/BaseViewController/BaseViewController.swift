@@ -3,7 +3,7 @@
 //  TableviewDemo
 //
 //  Created by Pooja Gupta on 13/01/20.
-//  Copyright © 2020 Accenture. All rights reserved.
+//  Copyright © 2020 Organization. All rights reserved.
 //
 
 import UIKit
@@ -65,16 +65,17 @@ extension BaseViewController {
     
     func setActivityIndicator() {
         activityIndicator.startAnimating()
-        activityIndicator.center = self.view.center
         view.addSubview(activityIndicator)
         addConstraintToActivityIndicator()
     }
     
     func addConstraintToActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
         let xCenter = self.activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         let yCenter = self.activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         
-        view.addConstraints([xCenter, yCenter])
+        view.addConstraints([ xCenter, yCenter])
     }
     
     func addConstraintToTableView() {

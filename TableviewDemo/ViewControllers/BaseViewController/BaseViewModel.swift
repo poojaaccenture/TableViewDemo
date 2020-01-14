@@ -3,7 +3,7 @@
 //  TableviewDemo
 //
 //  Created by Pooja Gupta on 13/01/20.
-//  Copyright © 2020 Accenture. All rights reserved.
+//  Copyright © 2020 Organization. All rights reserved.
 //
 
 import UIKit
@@ -49,11 +49,9 @@ extension BaseViewModel {
     func getTableData() {
         
         WebServicesMappingUtil.getTableData {[weak self] (response, statusCode) in
-            print(response as Any, statusCode)
             guard let self = self else { return }
             
             switch statusCode {
-                
             case HTTP.Status.success:
                 if let response = response as? TableData {
                     self.data = response

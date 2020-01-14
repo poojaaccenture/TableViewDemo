@@ -3,7 +3,7 @@
 //  TableviewDemo
 //
 //  Created by Pooja Gupta on 13/01/20.
-//  Copyright © 2020 Accenture. All rights reserved.
+//  Copyright © 2020 Organization. All rights reserved.
 //
 
 import UIKit
@@ -27,6 +27,8 @@ class BaseTableViewCell: UITableViewCell {
         return lbl
     }()
     
+    let padding: CGFloat = 10
+    let imageHeight: CGFloat = 100
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -87,7 +89,7 @@ class BaseTableViewCell: UITableViewCell {
 extension BaseTableViewCell {
     func initialSetup() {
         
-        self.heightAnchor.constraint(greaterThanOrEqualToConstant: 120).isActive = true
+        self.heightAnchor.constraint(greaterThanOrEqualToConstant: (imageHeight+(2*padding))).isActive = true
         setImgView()
         setLabel()
         setDescription()
@@ -125,9 +127,9 @@ extension BaseTableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        let leading =  self.label.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor, constant: 10)
-        let top =  self.label.topAnchor.constraint(equalTo: self.topAnchor, constant: 10)
-        let trailing =  self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+        let leading =  self.label.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor, constant: padding)
+        let top =  self.label.topAnchor.constraint(equalTo: self.topAnchor, constant: padding)
+        let trailing =  self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding)
         
         self.addConstraints([leading, top, trailing])
     }
@@ -135,21 +137,21 @@ extension BaseTableViewCell {
     func addConstrainsToDescLabel() {
         descLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let leading =  self.descLabel.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor, constant: 10)
-        let top =  self.descLabel.topAnchor.constraint(equalTo: self.label.bottomAnchor, constant: 5)
-        let trailing =  self.descLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
+        let leading =  self.descLabel.leadingAnchor.constraint(equalTo: self.imgView.trailingAnchor, constant: padding)
+        let top =  self.descLabel.topAnchor.constraint(equalTo: self.label.bottomAnchor, constant: (padding/2))
+        let trailing =  self.descLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding)
         
-        let bottom =  self.descLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -10)
+        let bottom =  self.descLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -padding)
         self.addConstraints([leading, top, trailing, bottom])
     }
     
     func addConstrainsToImage() {
         imgView.translatesAutoresizingMaskIntoConstraints = false
         
-        let leading =  self.imgView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10)
-        let top =  self.imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10)
-        let height =  self.imgView.heightAnchor.constraint(equalToConstant: 100)
-        let width =  self.imgView.widthAnchor.constraint(equalToConstant: 100)
+        let leading =  self.imgView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding)
+        let top =  self.imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding)
+        let height =  self.imgView.heightAnchor.constraint(equalToConstant: imageHeight)
+        let width =  self.imgView.widthAnchor.constraint(equalToConstant: imageHeight)
         
         self.addConstraints([leading, top, height, width])
     }
