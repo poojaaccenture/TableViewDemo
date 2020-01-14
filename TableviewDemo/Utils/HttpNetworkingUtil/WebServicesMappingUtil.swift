@@ -23,9 +23,15 @@ class WebServicesMappingUtil {
                 
                 if(response.response?.statusCode == HTTP.Status.success){
 
-                    let news  =  Mapper<TableData>().map(JSON: response.result.value as! [String : Any]);
-
-                    closure(news as Any, (response.response?.statusCode)!)
+                    let data  =  Mapper<TableData>().map(JSON: response.result.value as! [String : Any])
+                    
+                    //Remove the data which title is nill
+                    let filtetedData = data?.rows.filter({ (item) -> Bool in
+                        item.title != nil
+                    })
+                    
+                    data?.rows = filtetedData ?? [Row]()
+                    closure(data as Any, (response.response?.statusCode)!)
 
                 }else{
                     closure(nil, (response.response?.statusCode)!)

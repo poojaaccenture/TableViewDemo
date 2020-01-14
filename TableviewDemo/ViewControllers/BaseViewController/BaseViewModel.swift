@@ -50,13 +50,14 @@ extension BaseViewModel {
         
         WebServicesMappingUtil.getTableData {[weak self] (response, statusCode) in
             print(response as Any, statusCode)
+            guard let self = self else { return }
             
             switch statusCode {
                 
             case HTTP.Status.success:
                 if let response = response as? TableData {
-                    self?.data = response
-                    self?.dataDidLoad.value = true
+                    self.data = response
+                    self.dataDidLoad.value = true
                 }
                 
             default:

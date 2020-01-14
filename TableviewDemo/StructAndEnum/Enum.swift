@@ -8,10 +8,10 @@
 
 import UIKit
 
-enum CellIdentifier : String {
+enum CellIdentifier {
     
     //Tableview cell
-    case baseTableViewCell = "BaseTableViewCell"
+   static let baseTableViewCell = "BaseTableViewCell"
 }
 
 enum LabelText {

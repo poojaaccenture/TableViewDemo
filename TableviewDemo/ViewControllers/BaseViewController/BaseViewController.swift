@@ -14,7 +14,7 @@ class BaseViewController: UIViewController {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: CellIdentifier.baseTableViewCell.rawValue)
+        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: CellIdentifier.baseTableViewCell)
         return tableView
     }()
     
@@ -26,7 +26,7 @@ class BaseViewController: UIViewController {
     
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString.init(string: "Refreshing")
+        refreshControl.attributedTitle = NSAttributedString.init(string: "Refreshing".localized)
         refreshControl.addTarget(self, action:
             #selector(BaseViewController.handleRefresh(_:)),
                                  for: UIControl.Event.valueChanged)
@@ -107,9 +107,10 @@ extension BaseViewController {
     
     func bindDataDidLoad() {
         viewModel.dataDidLoad.bind {[weak self] (didLoad) in
-            self?.title = self?.viewModel.title
-            self?.activityIndicator.stopAnimating()
-            self?.tableview.reloadData()
+            guard let self = self else { return }
+            self.title = self.viewModel.title
+            self.activityIndicator.stopAnimating()
+            self.tableview.reloadData()
         }
     }
 }
@@ -120,7 +121,7 @@ extension BaseViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.baseTableViewCell.rawValue) as? BaseTableViewCell else { return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.baseTableViewCell) as? BaseTableViewCell else { return UITableViewCell()
         }
         
         cell.configure(with: viewModel.cellViewModel(for: indexPath))

@@ -20,11 +20,6 @@ class BaseLabel: UILabel {
         initialSetup()
     }
     
-//    init() {
-//        super.init()
-//        initialSetup()
-//    }
-    
     func initialSetup() {
         self.numberOfLines = 0
     }
