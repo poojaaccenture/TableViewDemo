@@ -12,7 +12,7 @@ class BaseViewModel {
     
     var data: TableData?
     
-    // MARK: - Dynamic parameters
+    // MARK:- Dynamic parameters
     let dataDidLoad = Dynamic<Bool>(value: false)
     
     var title: String {
@@ -23,10 +23,6 @@ class BaseViewModel {
 
 // MARK:- Table releated methods
 extension BaseViewModel {
-    func numberOfSections() -> Int {
-        return 1
-    }
-    
     func numberOfRows(in section: Int) -> Int {
         return data?.rows.count ?? 0
     }

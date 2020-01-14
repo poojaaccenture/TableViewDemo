@@ -10,7 +10,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    lazy var tableview: UITableView = {
+    private lazy var tableview: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -18,14 +18,15 @@ class BaseViewController: UIViewController {
         return tableView
     }()
     
-    lazy var activityIndicator: UIActivityIndicatorView = {
+    private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView.init(style: .gray)
         indicator.hidesWhenStopped = true
         return indicator
     }()
     
-    lazy var refreshControl: UIRefreshControl = {
+    private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString.init(string: "Refreshing")
         refreshControl.addTarget(self, action:
             #selector(BaseViewController.handleRefresh(_:)),
                                  for: UIControl.Event.valueChanged)
@@ -55,23 +56,21 @@ extension BaseViewController {
     }
     
     func setTableView()  {
-        tableview.delegate = self
         tableview.dataSource = self
-        self.tableview.addSubview(refreshControl)
-        self.view.addSubview(tableview)
+        tableview.addSubview(refreshControl)
+        tableview.tableFooterView = UIView()
+        view.addSubview(tableview)
         addConstraintToTableView()
     }
     
     func setActivityIndicator() {
         activityIndicator.startAnimating()
         activityIndicator.center = self.view.center
-        self.view.addSubview(activityIndicator)
+        view.addSubview(activityIndicator)
         addConstraintToActivityIndicator()
     }
     
     func addConstraintToActivityIndicator() {
-//        let height = self.activityIndicator.heightAnchor.constraint(equalToConstant: 100)
-//        let width = self.activityIndicator.widthAnchor.constraint(equalToConstant: 100)
         let xCenter = self.activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         let yCenter = self.activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         
@@ -116,10 +115,6 @@ extension BaseViewController {
 }
 
 extension BaseViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows(in: section)
     }
@@ -131,11 +126,5 @@ extension BaseViewController: UITableViewDataSource {
         cell.configure(with: viewModel.cellViewModel(for: indexPath))
         return cell
     }
-    
-    
-}
-
-extension BaseViewController: UITableViewDelegate {
-    
 }
 

@@ -10,17 +10,18 @@ import UIKit
 
 class BaseTableViewCell: UITableViewCell {
     
-    lazy var imgView: UIImageView = {
+    private lazy var imgView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.init(named: "placeholder")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    lazy var label: BaseLabel = {
-       let lbl = BaseLabel()
+    private lazy var label: BaseLabel = {
+        let lbl = BaseLabel()
         lbl.text = ""
         return lbl
     }()
-    lazy var descLabel: UILabel = {
+    private lazy var descLabel: UILabel = {
         let lbl = BaseLabel()
         lbl.text = ""
         return lbl
