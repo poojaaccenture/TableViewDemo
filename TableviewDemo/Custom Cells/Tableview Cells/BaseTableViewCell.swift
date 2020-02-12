@@ -68,8 +68,10 @@ class BaseTableViewCell: UITableViewCell {
         if let attributedText = viewModel?.description?.attributedText {
             descLabel.attributedText = attributedText
         }
-        
-        self.imgView.loadImage(from: viewModel?.imageUrl, withPlaceholder: nil)
+    }
+    
+    func setImage(with imageUrl: String?) {
+        self.imgView.loadImage(from: imageUrl, withPlaceholder: nil)
     }
     
 }

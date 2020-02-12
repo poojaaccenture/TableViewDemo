@@ -56,6 +56,7 @@ extension BaseViewController {
     
     func setTableView()  {
         tableview.dataSource = self
+        tableview.delegate = self
         tableview.addSubview(refreshControl)
         tableview.tableFooterView = UIView()
         view.addSubview(tableview)
@@ -133,6 +134,14 @@ extension BaseViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         cell.configure(with: viewModel.cellViewModel(for: indexPath))
         return cell
+    }
+}
+
+//MARK:- Tableview Delegate
+extension BaseViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? BaseTableViewCell else { return }
+        cell.setImage(with: viewModel.imageUrl(for: indexPath))
     }
 }
 

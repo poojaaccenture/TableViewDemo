@@ -41,6 +41,10 @@ extension BaseViewModel {
         
         return cellViewModel
     }
+    
+    func imageUrl(for indexPath: IndexPath) -> String? {
+        return data?.rows[indexPath.row].imageHref
+    }
 }
 
 //MARK:- Network calls
